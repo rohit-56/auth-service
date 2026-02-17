@@ -1,6 +1,6 @@
 package com.patient_management.auth_service.dto;
 
-public class TokenResponse {
+public class LoginResponse {
 
     public  String token;
 
