@@ -25,12 +25,12 @@ public class AuthController {
     @PostMapping("/login")
     public ResponseEntity<LoginResponse> login(@Validated @RequestBody LoginRequest loginRequest) {
 
-        Optional<String> token = authService.getToken(loginRequest);
-        if (token.get()==null) {
+        String token = authService.getToken(loginRequest);
+        if (token==null) {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Token not created user not present");
         }
         LoginResponse loginResponse = new LoginResponse();
-        loginResponse.setToken(token.get());
+        loginResponse.setToken(token);
         return new ResponseEntity<>(loginResponse, HttpStatus.CREATED);
     }
 
